@@ -83,11 +83,14 @@ class TSApplication : MultiDexApplication() {
     private fun initApi() {
         var apiURL = WKSharedPreferencesUtil.getInstance().getSP("api_base_url")
         if (TextUtils.isEmpty(apiURL)) {
-            apiURL = "https://api.botgate.cn"
+            apiURL = "http://101.126.146.226:8090"
             WKApiConfig.initBaseURL(apiURL)
         } else {
             WKApiConfig.initBaseURLIncludeIP(apiURL)
         }
+        android.util.Log.d("TSApplication", "API URL: $apiURL")
+        android.util.Log.d("TSApplication", "Base URL: ${WKApiConfig.baseUrl}")
+        android.util.Log.d("TSApplication", "Web URL: ${WKApiConfig.baseWebUrl}")
     }
 
     private fun getAppPackageName(): String {
